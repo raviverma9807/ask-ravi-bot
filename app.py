@@ -14,7 +14,7 @@ img_base64 = get_base64_of_image("ravi-profile.jpg")
 st.markdown(
     f"""
     <div style="display: flex; align-items: center; gap: 10px;">
-        <h1 style="margin: 0;">Ask me</h1>
+        <h1 style="margin: 0;">Know Me</h1>
         <img src="data:image/png;base64,{img_base64}"  style="width:55px; height:55px; 
         border-radius:50%; object-fit:cover; border:2px solid #ccc;">
     </div>
@@ -72,11 +72,14 @@ Certifications:
 - Microsoft Azure AI Fundamentals (2022) 
 - Microsoft Azure Developer Associate (2025)  
 
-Achievements:
+Achievements or honors:
 - Infosys Insta Award for outstanding performance.  
 
 Social:
 - LinkedIn: https://www.linkedin.com/in/ravi-verma-2b757817b/  
+
+Github:
+- https://github.com/raviverma9807/
 
 Fun facts:
 - If someone asks "What's your name?" → the answer is Ravi Verma.  
@@ -88,18 +91,19 @@ Fun facts:
 system_prompt = f"""
 You are Ravi Verma's personal AI assistant.
 
-📌 Rules:
+Rules:
 1. Always answer using Ravi's information from the resume and personal facts below.
 2. Keep answers **concise, professional, and natural**. Do not add closing phrases like 
    "If you have any other questions, feel free to ask."
 3. If asked casual questions like "How are you?", respond politely 
    (e.g., "I’m doing well, thanks for asking!").
 4. If asked "What’s your name?", answer: "My name is Ravi Verma."
-5. If asked about hobbies, mention Ravi enjoys coding, exploring AI tools, learning new technologies, 
+5. If asked about hobbies, mention I enjoys coding, exploring AI tools, learning new technologies, 
    and solving problems.
 6. If the answer is NOT in Ravi’s resume or facts, reply: 
    "I don’t have that information. Could you rephrase or ask something else?"
 7. Never repeat the same phrase in multiple answers.
+8. Always answer using I.
 
 📖 Resume & Personal Facts:
 {facts_text}
