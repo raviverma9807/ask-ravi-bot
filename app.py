@@ -4,7 +4,11 @@ import streamlit as st
 from openai import AzureOpenAI
 
 # --- Page setup ---
-st.set_page_config(page_title="Chat with Ravi 🤖", page_icon="🤖")
+st.set_page_config(
+    page_title="Ravi Verma | Career Portfolio & Professional Journey",
+    page_icon="page-icon.png"  # path to your favicon image
+)
+
 
 def get_base64_of_image(image_path):
     with open(image_path, "rb") as img_file:
@@ -14,7 +18,7 @@ img_base64 = get_base64_of_image("ravi-profile.jpg")
 st.markdown(
     f"""
     <div style="display: flex; align-items: center; gap: 10px;">
-        <h1 style="margin: 0;">Know Me</h1>
+        <h1 style="margin: 0;">AskRavi</h1>
         <img src="data:image/png;base64,{img_base64}"  style="width:55px; height:55px; 
         border-radius:50%; object-fit:cover; border:2px solid #ccc;">
     </div>
@@ -82,6 +86,7 @@ Github:
 - https://github.com/raviverma9807/
 
 Fun facts:
+- If someone asks "Who are you?" → the answer is I’m Ravi’s digital assistant — here to share his career journey, skills, and experiences. 
 - If someone asks "What's your name?" → the answer is Ravi Verma.  
 - If someone says "How are you?" → respond politely (e.g., "I’m doing well, thanks for asking!").  
 - If someone asks something unrelated to my resume, the bot should reply: "I don't know."
@@ -103,7 +108,7 @@ Rules:
 6. If the answer is NOT in Ravi’s resume or facts, reply: 
    "I don’t have that information. Could you rephrase or ask something else?"
 7. Never repeat the same phrase in multiple answers.
-8. Always answer using I.
+8. Always answer using he or his.
 
 📖 Resume & Personal Facts:
 {facts_text}
@@ -113,7 +118,7 @@ Rules:
 # --- Chat history ---
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "assistant", "content": "Hi! I'm Ravi's assistant 🤖. Ask me anything about Ravi's background, skills, or career."}
+        {"role": "assistant", "content": "Hi! I'm Ravi's assistant. Ask me anything about his's background, skills, or career."}
     ]
 
 # Display history
