@@ -5,7 +5,7 @@ from openai import AzureOpenAI
 
 # --- Page setup ---
 st.set_page_config(
-    page_title="Ravi Verma | Career Portfolio & Professional Journey",
+    page_title="Ravi Verma | Career Portfolio",
     page_icon="page-icon.png"  # path to your favicon image
 )
 
