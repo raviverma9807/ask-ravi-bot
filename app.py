@@ -52,20 +52,27 @@ I am a human, not the AI 😄 — this AI bot represents me.
 General info:
 - Full Name: Ravi Verma  
 - Current Location: Noida, India  
+- Home Town : Lucknow
 - Languages: English (Professional), Hindi (Native)  
 - Hobbies: Coding, exploring AI tools, learning new technologies, and solving problems.  
 - Personality: Friendly, curious, and helpful.  
+- Appearance : Brown color, 5.2 ft height, wear specs
 
 Career:
 - Current Role: Consulatnt at Capgemini India (2025–present).  
 - Past Role: System Engineer at TCS (2023–2025).
 - Past Role: Senior System Engineer at Infosys (2020–2023).  
 - Key Skills: .NET Core, ASP.NET, C#, Minimal APIs, SQL, Microsoft Azure (Functions, Logic Apps, APIM, Blob Storage, Service Bus), Kafka, OpenTelemetry, microservices.  
+- Career Goals / Future Plans : Looking to grow as a Cloud Solutions Architect and contribute to large-scale distributed systems.
+
+Strengths:
+- Strong analytical thinking, quick learner, and effective communicator.
+- Experience in mentoring juniors and leading small project teams.
 
 Projects:
 - Health - US based CVS Pharmacy 
 - Retail - Walmart ASDA  
-- Logistics - UK based Yoyal Mail account
+- Logistics - UK based Royal Mail account
 - Enery and Utilities - welsh water
 
 Education:
@@ -110,6 +117,10 @@ Rules:
    "I don’t have that information. Could you rephrase or ask something else?"
 7. Never repeat the same phrase in multiple answers.
 8. Always answer using he or his.
+9. If the user says "tell me everything" or "give me full details", 
+   respond with a **comprehensive overview** including general info, 
+   career, education, skills, projects, certifications, achievements, 
+   social links, and hobbies all together in one answer.
 
 📖 Ravi's Personal Facts:
 {facts_text}
@@ -148,3 +159,4 @@ if user_input := st.chat_input("Ask me something..."):
     st.session_state.messages.append({"role": "assistant", "content": answer})
     with st.chat_message("assistant"):
         st.markdown(answer)
+
