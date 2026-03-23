@@ -19,7 +19,7 @@ img_base64 = get_base64_of_image("ravi-profile.jpg")
 st.markdown(
     f"""
     <div style="display: flex; align-items: center; gap: 10px;">
-        <h1 style="margin: 0;">AskRavi</h1>
+        <h1 style="margin: 0;">Ask Me Anything – AI Assistant</h1>
         <img src="data:image/png;base64,{img_base64}" style="width:55px; height:55px; 
         border-radius:50%; object-fit:cover; border:2px solid #ccc;">
     </div>
