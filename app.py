@@ -19,7 +19,7 @@ img_base64 = get_base64_of_image("ravi-profile.jpg")
 st.markdown(
     f"""
     <div style="display: flex; align-items: center; gap: 10px;">
-        <h1 style="margin: 0;">Ask Me Anything – AI Assistant</h1>
+        <h1 style="margin: 0;">AI-Powered Career Assistant</h1>
         <img src="data:image/png;base64,{img_base64}" style="width:55px; height:55px; 
         border-radius:50%; object-fit:cover; border:2px solid #ccc;">
     </div>
@@ -27,7 +27,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.caption("Powered by Azure OpenAI · Ask me about Ravi")
+st.caption("Built using Azure OpenAI and Streamlit")
 
 # --- Load Azure OpenAI credentials ---
 AZURE_OPENAI_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT") or st.secrets.get("AZURE_OPENAI_ENDPOINT")
@@ -129,7 +129,7 @@ Rules:
 # --- Chat history ---
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "assistant", "content": "Hi! I'm Ravi's assistant. Ask me anything about his background, skills, or career."}
+        {"role": "assistant", "content": "Explore my professional experience, Azure expertise,.NET development skills, certifications, projects, and career achievements through an AI-powered conversational assistant."}
     ]
 
 # --- Render chat messages ---
