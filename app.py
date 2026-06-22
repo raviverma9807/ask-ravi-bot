@@ -79,9 +79,11 @@ Education:
 - High School-2013 (88%) and Intermediate-2015 (88%) from Brightland Inter College Lucknow, UP and B.Tech in Computer Science from Ajay Kumar Garg Engineering College, Ghaziabad, UP (2016–2020, CGPA 8.41). 
 
 Certifications:
-- Microsoft Azure Fundamentals (2022)  
-- Microsoft Azure AI Fundamentals (2022) 
-- Microsoft Azure Developer Associate (2025)  
+-Microsoft Certified: Azure Developer Associate (AZ-204)
+-Microsoft Certified: Azure Administrator Associate (AZ-104)
+-Microsoft Certified: Azure Fundamentals (AZ-900) 
+-Microsoft Certified: Azure AI Fundamentals (AI-900) 
+ 
 
 Achievements or honors:
 - Infosys Insta Award for outstanding performance.  
@@ -129,7 +131,7 @@ Rules:
 # --- Chat history ---
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "assistant", "content": "Explore my professional experience, Azure expertise,.NET development skills, certifications, projects, and career achievements through an AI-powered conversational assistant."}
+        {"role": "assistant", "content": "Explore my professional experience, Azure expertise, .NET development skills, certifications, projects, and career achievements through an AI-powered assistant built with Azure OpenAI."}
     ]
 
 # --- Render chat messages ---
@@ -138,7 +140,7 @@ for msg in st.session_state.messages:
         st.markdown(msg["content"])
 
 # --- Input & response ---
-if user_input := st.chat_input("Ask me something..."):
+if user_input := st.chat_input("Ask about my Azure experience, .NET projects, certifications, or AI solutions......"):
     st.session_state.messages.append({"role": "user", "content": user_input})
     with st.chat_message("user"):
         st.markdown(user_input)
