@@ -79,6 +79,14 @@ if not AZURE_OPENAI_ENDPOINT or not AZURE_OPENAI_KEY or not AZURE_DEPLOYMENT:
     st.error("❌ Azure OpenAI credentials not found. Please set AZURE_OPENAI_ENDPOINT, AZURE_OPENAI_KEY, and AZURE_DEPLOYMENT.")
     st.stop()
 
+AZURE_SEARCH_ENDPOINT = os.getenv("AZURE_SEARCH_ENDPOINT") or st.secrets.get("AZURE_SEARCH_ENDPOINT")
+AZURE_SEARCH_KEY = os.getenv("AZURE_SEARCH_KEY") or st.secrets.get("AZURE_SEARCH_KEY")
+AZURE_SEARCH_INDEX = os.getenv("AZURE_SEARCH_INDEX") or st.secrets.get("AZURE_SEARCH_INDEX")
+
+if not AZURE_SEARCH_ENDPOINT or not AZURE_SEARCH_KEY or not AZURE_SEARCH_INDEX:
+    st.error("❌ Azure Search credentials not found. Please set AZURE_SEARCH_ENDPOINT, AZURE_SEARCH_KEY, and AZURE_SEARCH_INDEX.")
+    st.stop()
+
 client = AzureOpenAI(
     api_key=AZURE_OPENAI_KEY,
     api_version="2024-02-01",
