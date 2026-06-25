@@ -48,6 +48,25 @@ st.markdown(
 
 st.caption("Built using Azure OpenAI and Streamlit")
 
+
+def search_documents(query):
+    try:
+        results = search_client.search(
+            search_text=query,
+            top=3
+        )
+
+        chunks = []
+
+        for result in results:
+            chunks.append(result["chunk"])
+
+        return "\n\n".join(chunks)
+
+    except Exception as ex:
+        return f"Search Error: {ex}"
+
+
 if st.button("Test Azure Search"):
     result = search_documents("Royal Mail")
     st.text_area("Search Result", result, height=400)
@@ -105,22 +124,6 @@ search_client = SearchClient(
 
 )
 
-def search_documents(query):
-    try:
-        results = search_client.search(
-            search_text=query,
-            top=3
-        )
-
-        chunks = []
-
-        for result in results:
-            chunks.append(result["chunk"])
-
-        return "\n\n".join(chunks)
-
-    except Exception as ex:
-        return f"Search Error: {ex}"
 
 
 # --- Resume & Personal Knowledge Base ---
