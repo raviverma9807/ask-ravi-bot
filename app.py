@@ -16,6 +16,25 @@ def get_base64_of_image(image_path):
 
 img_base64 = get_base64_of_image("ravi-profile.jpg")
 
+col1, col2, col3, col4 = st.columns(4)
+
+with col1:
+    if st.button("☁️ Azure"):
+        st.session_state["preset_question"] = "What Azure services has Ravi worked with?"
+
+with col2:
+    if st.button("🏗️ Microservices"):
+        st.session_state["preset_question"] = "Tell me about Ravi's microservices experience."
+
+with col3:
+    if st.button("🏆 Certifications"):
+        st.session_state["preset_question"] = "What certifications does Ravi hold?"
+
+with col4:
+    if st.button("🤖 Projects"):
+        st.session_state["preset_question"] = "Tell me about Ravi's major projects."
+
+
 st.markdown(
     f"""
     <div style="display: flex; align-items: center; gap: 10px;">
@@ -59,7 +78,7 @@ General info:
 - Appearance : Brown color, 5.2 ft height, wear specs
 
 Career:
-- Current Role: Consulatnt at Capgemini India (2025–present).  
+- Current Role: Consultant at Capgemini India (2025–present).  
 - Past Role: System Engineer at TCS (2023–2025).
 - Past Role: Senior System Engineer at Infosys (2020–2023).  
 - Key Skills: .NET Core, ASP.NET, C#, Minimal APIs, SQL, Microsoft Azure (Functions, Logic Apps, APIM, Blob Storage, Service Bus), Kafka, OpenTelemetry, microservices.  
@@ -74,6 +93,11 @@ Projects:
 - Retail - Walmart ASDA  
 - Logistics - UK based Royal Mail account
 - Enery and Utilities - welsh water
+
+AI Project:
+- Developed and deployed an AI-Powered Career Assistant using Azure OpenAI and Streamlit.
+- Integrated prompt engineering techniques to provide context-aware responses.
+- Live Demo: https://raviverma.streamlit.app
 
 Education:
 - High School-2013 (88%) and Intermediate-2015 (88%) from Brightland Inter College Lucknow, UP and B.Tech in Computer Science from Ajay Kumar Garg Engineering College, Ghaziabad, UP (2016–2020, CGPA 8.41). 
@@ -140,7 +164,19 @@ for msg in st.session_state.messages:
         st.markdown(msg["content"])
 
 # --- Input & response ---
-if user_input := st.chat_input("Ask about my Azure experience, .NET projects, certifications, or AI solutions......"):
+
+if "preset_question" not in st.session_state:
+    st.session_state["preset_question"] = ""
+
+user_input = st.chat_input(
+    "Ask about my Azure experience, .NET projects, certifications, or AI solutions..."
+)
+
+if not user_input and st.session_state["preset_question"]:
+    user_input = st.session_state["preset_question"]
+    st.session_state["preset_question"] = ""
+
+if user_input:
     st.session_state.messages.append({"role": "user", "content": user_input})
     with st.chat_message("user"):
         st.markdown(user_input)
