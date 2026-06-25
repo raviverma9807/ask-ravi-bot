@@ -18,22 +18,20 @@ img_base64 = get_base64_of_image("ravi-profile.jpg")
 
 col1, col2, col3, col4 = st.columns(4)
 
-with col1:
-    if st.button("☁️ Azure"):
+with st.sidebar:
+    st.header("Quick Questions")
+
+    if st.button("☁️ Azure Experience"):
         st.session_state["preset_question"] = "What Azure services has Ravi worked with?"
 
-with col2:
     if st.button("🏗️ Microservices"):
         st.session_state["preset_question"] = "Tell me about Ravi's microservices experience."
 
-with col3:
     if st.button("🏆 Certifications"):
         st.session_state["preset_question"] = "What certifications does Ravi hold?"
 
-with col4:
     if st.button("🤖 Projects"):
         st.session_state["preset_question"] = "Tell me about Ravi's major projects."
-
 
 st.markdown(
     f"""
