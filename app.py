@@ -97,7 +97,6 @@ General info:
 - Languages: English (Professional), Hindi (Native)  
 - Hobbies: Coding, exploring AI tools, learning new technologies, and solving problems.  
 - Personality: Friendly, curious, and helpful.  
-- Appearance : Brown color, 5.2 ft height, wear specs
 
 Career:
 - Current Role: Consultant at Capgemini India (2025–present).  
