@@ -88,7 +88,7 @@ if not AZURE_OPENAI_ENDPOINT or not AZURE_OPENAI_KEY or not AZURE_DEPLOYMENT:
 client = AzureOpenAI(
     api_key=AZURE_OPENAI_KEY,
     api_version="2024-02-01",
-    azure_endpoint=AZURE_OPENAI_ENDPOINT
+    azure_endpoint=AZURE_OPENAI_ENDPOINT)
 
 AZURE_SEARCH_ENDPOINT = os.getenv("AZURE_SEARCH_ENDPOINT") or st.secrets.get("AZURE_SEARCH_ENDPOINT")
 AZURE_SEARCH_KEY = os.getenv("AZURE_SEARCH_KEY") or st.secrets.get("AZURE_SEARCH_KEY")
