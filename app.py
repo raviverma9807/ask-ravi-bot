@@ -46,6 +46,30 @@ st.markdown(
 
 st.caption("Built using Azure OpenAI and Streamlit")
 
+#link to download resume
+
+with st.sidebar:
+    st.header("Connect")
+
+    st.link_button(
+        "LinkedIn",
+        "https://www.linkedin.com/in/ravi-verma-2b757817b/"
+    )
+
+    st.link_button(
+        "GitHub",
+        "https://github.com/raviverma9807/"
+    )
+
+    with open("Ravi_Verma_Resume.pdf", "rb") as pdf_file:
+        st.download_button(
+            label="📄 Download Resume",
+            data=pdf_file,
+            file_name="Ravi_Verma_Resume.pdf",
+            mime="application/pdf"
+        )
+
+
 # --- Load Azure OpenAI credentials ---
 AZURE_OPENAI_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT") or st.secrets.get("AZURE_OPENAI_ENDPOINT")
 AZURE_OPENAI_KEY = os.getenv("AZURE_OPENAI_KEY") or st.secrets.get("AZURE_OPENAI_KEY")
