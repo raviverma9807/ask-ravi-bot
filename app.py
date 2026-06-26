@@ -80,17 +80,15 @@ if user_input:
         st.markdown(user_input)
 
     try:
-    with st.spinner("Getting response..."):
+        with st.spinner("Getting response..."):
 
-        # Retrieve relevant context from Azure AI Search
-        context, sources = search_service.search_documents(user_input)
+            context, sources = search_service.search_documents(user_input)
 
-        # Generate response using Azure OpenAI
-        answer = openai_service.generate_answer(
-            question=user_input,
-            context=context,
-            history=st.session_state.messages
-        )
+            answer = openai_service.generate_answer(
+                question=user_input,
+                context=context,
+                history=st.session_state.messages
+            )
 
     except Exception as ex:
         answer = f"⚠️ Error: {ex}"
@@ -106,3 +104,4 @@ if user_input:
     with st.chat_message("assistant"):
         st.markdown(answer)
         render_sources(sources)
+    
