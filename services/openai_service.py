@@ -5,6 +5,7 @@ from prompts.system_prompt import SYSTEM_PROMPT
 class OpenAIService:
     def __init__(self, endpoint, api_key, deployment):
         self.deployment = deployment
+
         self.client = AzureOpenAI(
             api_key=api_key,
             api_version="2024-02-01",
@@ -14,6 +15,9 @@ class OpenAIService:
     def generate_answer(self, question, context, history):
         system_prompt = SYSTEM_PROMPT.format(context=context)
 
+        # Keep only the last few messages to maintain context
+        conversation = history[-6:] if len(history) > 6 else history
+
         messages = [
             {
                 "role": "system",
@@ -21,11 +25,21 @@ class OpenAIService:
             }
         ]
 
-        messages.extend(history)
+        messages.extend(conversation)
+
+        # Ensure the current question is always the final message
+        if not conversation or conversation[-1]["role"] != "user":
+            messages.append(
+                {
+                    "role": "user",
+                    "content": question
+                }
+            )
 
         response = self.client.chat.completions.create(
             model=self.deployment,
             temperature=0.2,
+            max_tokens=900,
             messages=messages
         )
 

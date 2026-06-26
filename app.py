@@ -44,7 +44,7 @@ if "messages" not in st.session_state:
     st.session_state.messages = [
         {
             "role": "assistant",
-            "content": "Hi! I'm Ravi Verma's AI Career Assistant. Ask me about my experience, projects, Azure expertise, .NET skills, certifications, or education."
+            "content": "Hi! I'm Ravi's AI Assistant. Ask me about his experience, projects, Azure expertise, .NET skills, certifications, or education."
         }
     ]
 
@@ -80,9 +80,43 @@ if user_input:
         st.markdown(user_input)
 
     try:
-        with st.spinner("Getting response..."):
+        with st.spinner("Preparing response..."):
 
             context, sources = search_service.search_documents(user_input)
+
+            if not context.strip():
+                answer = (
+                    "I couldn't find any relevant information in Ravi's knowledge base "
+                    "to answer that question."
+                )
+                sources = []
+            else:
+                answer = openai_service.generate_answer(
+                    question=user_input,
+                    context=context,
+                    history=st.session_state.messages
+                )
+    except Exception as ex:
+        answer = (
+            "Sorry, something went wrong while generating the response. "
+            "Please try again."
+        )
+        sources = []
+
+    st.session_state.messages.append(
+        {
+            "role": "assistant",
+            "content": answer
+        }
+    )
+
+    with st.chat_message("assistant"):
+        st.markdown(answer)
+        render_sources(sources)
+
+        context=context,
+        history=st.session_state.messages
+    )
 
             answer = openai_service.generate_answer(
                 question=user_input,

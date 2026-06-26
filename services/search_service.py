@@ -11,11 +11,11 @@ class SearchService:
             credential=AzureKeyCredential(api_key)
         )
 
-    def search_documents(self, query, top=5):
+    def search_documents(self, query, top=10):
         """
         Searches Azure AI Search and returns:
-        - context (string)
-        - sources (list of filenames)
+        - context (formatted string)
+        - sources (list of document names)
         """
 
         try:
@@ -27,21 +27,58 @@ class SearchService:
                 top=top
             )
 
-            chunks = []
+            context_parts = []
             sources = []
+            seen_chunks = set()
 
             for result in results:
 
-                if "chunk" in result:
-                    chunks.append(result["chunk"])
+                # Skip weak semantic matches
+                reranker_score = result.get("@search.rerankerScore", 0)
+                if reranker_score < 1.5:
+                    continue
 
-                if "title" in result:
-                    sources.append(result["title"])
+                title = result.get("title", "Unknown Document")
 
-            context = "\n\n".join(chunks)
+                # Prefer semantic caption if available
+                caption = ""
+                captions = result.get("@search.captions")
 
-            return context, list(set(sources))
+                if captions and len(captions) > 0:
+                    caption = captions[0].text
+
+                chunk = result.get("chunk", "")
+
+                # Use caption + chunk for better context
+                content = caption if caption else chunk
+
+                if not content:
+                    continue
+
+                content = content.strip()
+
+                # Remove duplicate chunks
+                if content in seen_chunks:
+                    continue
+
+                seen_chunks.add(content)
+
+                context_parts.append(
+                    f"""
+==================================================
+Document: {title}
+
+Relevant Information:
+{content}
+"""
+                )
+
+                sources.append(title)
+
+            context = "\n".join(context_parts)
+
+            return context, sorted(set(sources))
 
         except Exception as ex:
-            print(ex)
+            print(f"Azure AI Search Error: {ex}")
             return "", []
