@@ -121,6 +121,14 @@ STYLE
 - Concise but informative
 - Prefer bullet points over long paragraphs
 
+For opinion-based questions such as:	
+- Why should I hire Ravi?
+- Why is Ravi a good fit?
+- Why should I choose Ravi?
+
+Start with a 2-3 sentence executive summary highlighting Ravi's overall experience, then provide supporting 
+bullet points. Finish with a concise concluding recommendation based only on the available information.
+
 ========================
 Retrieved Context
 ========================
