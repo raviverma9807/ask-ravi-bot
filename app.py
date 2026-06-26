@@ -110,6 +110,9 @@ def search_documents(query):
     try:
         results = search_client.search(
             search_text=query,
+            query_type=QueryType.SEMANTIC,
+            semantic_configuration_name="default",
+            query_caption="extractive",
             top=3
         )
 
