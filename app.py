@@ -5,6 +5,8 @@ from openai import AzureOpenAI
 from streamlit.components.v1 import html as st_html  # <-- add this
 from azure.core.credentials import AzureKeyCredential
 from azure.search.documents import SearchClient
+from azure.search.documents.models import QueryType
+
 
 # --- Page setup ---
 st.set_page_config(
@@ -108,6 +110,9 @@ def search_documents(query):
     try:
         results = search_client.search(
             search_text=query,
+            query_type=QueryType.SEMANTIC,
+            semantic_configuration_name="default",
+            query_caption="extractive",
             top=3
         )
 
