@@ -80,14 +80,13 @@ if user_input:
         st.markdown(user_input)
 
     try:
-        with st.spinner("Preparing response..."):
+        with st.spinner("Preparing your answer..."):
 
             context, sources = search_service.search_documents(user_input)
 
             if not context.strip():
                 answer = (
-                    "I couldn't find any relevant information in Ravi's knowledge base "
-                    "to answer that question."
+                    "I couldn't find any relevant information in Ravi's knowledge base."
                 )
                 sources = []
             else:
@@ -96,32 +95,6 @@ if user_input:
                     context=context,
                     history=st.session_state.messages
                 )
-    except Exception as ex:
-        answer = (
-            "Sorry, something went wrong while generating the response. "
-            "Please try again."
-        )
-        sources = []
-
-    st.session_state.messages.append(
-        {
-            "role": "assistant",
-            "content": answer
-        }
-    )
-
-    with st.chat_message("assistant"):
-        st.markdown(answer)
-        render_sources(sources)
-
-        context=context,
-        history=st.session_state.messages
-
-        answer = openai_service.generate_answer(
-            question=user_input,
-            context=context,
-            history=st.session_state.messages
-            )
 
     except Exception as ex:
         answer = f"⚠️ Error: {ex}"
@@ -137,4 +110,3 @@ if user_input:
     with st.chat_message("assistant"):
         st.markdown(answer)
         render_sources(sources)
-    
