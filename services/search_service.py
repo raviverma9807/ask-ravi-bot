@@ -35,7 +35,7 @@ class SearchService:
 
                 # Skip weak semantic matches
                 reranker_score = result.get("@search.rerankerScore", 0)
-                if reranker_score < 1.5:
+                if reranker_score < 0.5:
                     continue
 
                 title = result.get("title", "Unknown Document")

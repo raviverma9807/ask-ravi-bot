@@ -2,6 +2,8 @@ import streamlit as st
 
 from services.openai_service import OpenAIService
 from services.search_service import SearchService
+from utils.profile_loader import load_profile
+
 
 from utils.ui import (
     render_header,
@@ -36,6 +38,7 @@ openai_service = OpenAIService(
     deployment=AZURE_DEPLOYMENT
 )
 
+profile = load_profile()
 render_header()
 render_sidebar()
 
@@ -82,19 +85,24 @@ if user_input:
     try:
         with st.spinner("Preparing your answer..."):
 
-            context, sources = search_service.search_documents(user_input)
+            search_context, sources = search_service.search_documents(user_input)
+            context = f"""
+            PROFILE INFORMATION
 
-            if not context.strip():
-                answer = (
-                    "I couldn't find any relevant information in Ravi's knowledge base."
-                )
-                sources = []
-            else:
-                answer = openai_service.generate_answer(
-                    question=user_input,
-                    context=context,
-                    history=st.session_state.messages
-                )
+            {profile}
+
+            ====================================================
+
+            PROJECT / EXPERIENCE INFORMATION
+
+            {search_context}
+            """
+
+            answer = openai_service.generate_answer(
+                question=user_input,
+                context=context,
+                history=st.session_state.messages
+            )
 
     except Exception as ex:
         answer = f"⚠️ Error: {ex}"
