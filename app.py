@@ -116,7 +116,6 @@ if user_input:
 
         context=context,
         history=st.session_state.messages
-    )
 
             answer = openai_service.generate_answer(
                 question=user_input,
