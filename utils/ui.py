@@ -10,52 +10,18 @@ def render_header():
     img_base64 = get_base64_image("images/ravi-profile.jpg")
 
     st.markdown(
-    f"""
-    <div style="
-        text-align:center;
-        padding-top:10px;
-        padding-bottom:15px;
-    ">
-
-        <img src="data:image/jpeg;base64,{img_base64}"
-            style="
-                width:100px;
-                height:100px;
-                border-radius:50%;
-                object-fit:cover;
-                border:3px solid #d9d9d9;
-            "/>
-
-        <h1 style="
-            margin-top:15px;
-            margin-bottom:5px;
-        ">
-            Ask Ravi
-        </h1>
-
-        <h3 style="
-            margin-top:0;
-            color:#666;
-            font-weight:500;
-        ">
-            AI-Powered Professional Portfolio
-        </h3>
-
-        <p style="
-            color:#888;
-            font-size:16px;
-            margin-top:8px;
-        ">
-            Built with Azure OpenAI • Azure AI Search • RAG
-        </p>
-
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+        f"""
+<div style="text-align:center;padding:10px 0 15px 0;">
+    <img src="data:image/jpeg;base64,{img_base64}" width="100" height="100" style="border-radius:50%;object-fit:cover;border:3px solid #d9d9d9;" />
+    <h1>Ask Ravi</h1>
+    <h3>AI-Powered Professional Portfolio</h3>
+    <p>Built with Azure OpenAI • Azure AI Search • RAG</p>
+</div>
+""",
+        unsafe_allow_html=True,
+    )
 
     st.caption("Built using Azure OpenAI, Azure AI Search and Streamlit")
-
 
 def render_sidebar():
     with st.sidebar:
