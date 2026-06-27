@@ -3,8 +3,9 @@ from prompts.system_prompt import SYSTEM_PROMPT
 
 
 class OpenAIService:
-    def __init__(self, endpoint, api_key, deployment):
+    def __init__(self, endpoint, api_key, deployment, embedding_deployment):
         self.deployment = deployment
+        self.embedding_deployment = embedding_deployment
 
         self.client = AzureOpenAI(
             api_key=api_key,
