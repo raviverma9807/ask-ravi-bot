@@ -12,7 +12,7 @@ def render_header():
     st.markdown(
         f"""
         <div style="display:flex;align-items:center;gap:12px;">
-            <h1 style="margin:0;">AI-Powered Professional Portfolio</h1>
+            <h1 style="margin:0;">Ask Ravi</h1>
             <img src="data:image/jpeg;base64,{img_base64}"
                  style="width:55px;height:55px;border-radius:50%;
                  border:2px solid #ccc;object-fit:cover;">
@@ -20,6 +20,17 @@ def render_header():
         """,
         unsafe_allow_html=True
     )
+
+    st.markdown(
+        """
+        <div style="margin-top:-8px;margin-bottom:8px;font-size:18px;color:#666;font-weight:500;">
+            AI-Powered Professional Portfolio
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+st.caption("Built with Azure OpenAI • Azure AI Search")
 
     st.caption("Built using Azure OpenAI, Azure AI Search and Streamlit")
 
