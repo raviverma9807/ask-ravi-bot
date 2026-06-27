@@ -9,27 +9,22 @@ def get_base64_image(image_path):
 def render_header():
     img_base64 = get_base64_image("images/ravi-profile.jpg")
 
-    st.markdown(
-        f"""
-        <div style="margin-bottom:20px;">
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;">
-                <h1 style="margin:0;font-size:2.2rem;font-weight:700;">Ask Ravi</h1>
+    col1, col2 = st.columns([6, 1])
 
-                <img src="data:image/jpeg;base64,{img_base64}"
-                     style="width:72px;height:72px;min-width:72px;border-radius:50%;object-fit:cover;border:2px solid #d9d9d9;flex-shrink:0;" />
-            </div>
+    with col1:
+        st.title("Ask Ravi")
+        st.markdown("**AI-Powered Professional Portfolio**")
+        st.caption("Built with Azure OpenAI • Azure AI Search")
 
-            <div style="margin-top:6px;color:#777;font-size:1.1rem;">
-                AI-Powered Professional Portfolio
-            </div>
-
-            <div style="margin-top:8px;color:#999;font-size:0.95rem;">
-                Built with Azure OpenAI • Azure AI Search
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+    with col2:
+        st.markdown(
+            f"""
+            <img src="data:image/jpeg;base64,{img_base64}"
+                 width="75"
+                 style="border-radius:50%;border:2px solid #ccc;">
+            """,
+            unsafe_allow_html=True,
+        )
 
     st.caption("Built using Azure OpenAI, Azure AI Search and Streamlit")
 
