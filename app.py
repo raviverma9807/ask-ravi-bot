@@ -22,7 +22,7 @@ from utils.config import (
 
 # --- Page setup ---
 st.set_page_config(
-    page_title="Ravi Verma | Career Portfolio",
+    page_title="Ravi Verma | Professional Portfolio",
     page_icon="r2.png"
 )
 
@@ -47,7 +47,7 @@ if "messages" not in st.session_state:
     st.session_state.messages = [
         {
             "role": "assistant",
-            "content": "Hi! I'm Ravi's AI Assistant. Ask me about his experience, projects, Azure expertise, .NET skills, certifications, or education."
+            "content": "👋 Hi! I'm Ask Ravi. Ask me anything about Ravi's experience, projects, Azure expertise, certifications, or skills."
         }
     ]
 
