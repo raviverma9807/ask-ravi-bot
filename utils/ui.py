@@ -11,13 +11,23 @@ def render_header():
 
     st.markdown(
         f"""
-<div style="text-align:center;padding:10px 0 15px 0;">
-    <img src="data:image/jpeg;base64,{img_base64}" width="100" height="100" style="border-radius:50%;object-fit:cover;border:3px solid #d9d9d9;" />
-    <h1>Ask Ravi</h1>
-    <h3>AI-Powered Professional Portfolio</h3>
-    <p>Built with Azure OpenAI • Azure AI Search • RAG</p>
-</div>
-""",
+        <div style="margin-bottom:20px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;">
+                <h1 style="margin:0;font-size:2.2rem;font-weight:700;">Ask Ravi</h1>
+
+                <img src="data:image/jpeg;base64,{img_base64}"
+                     style="width:72px;height:72px;min-width:72px;border-radius:50%;object-fit:cover;border:2px solid #d9d9d9;flex-shrink:0;" />
+            </div>
+
+            <div style="margin-top:6px;color:#777;font-size:1.1rem;">
+                AI-Powered Professional Portfolio
+            </div>
+
+            <div style="margin-top:8px;color:#999;font-size:0.95rem;">
+                Built with Azure OpenAI • Azure AI Search
+            </div>
+        </div>
+        """,
         unsafe_allow_html=True,
     )
 
