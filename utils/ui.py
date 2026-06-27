@@ -24,7 +24,7 @@ def render_header():
                 border-radius:50%;
                 object-fit:cover;
                 border:3px solid #d9d9d9;
-            ">
+            "/>
 
         <h1 style="
             margin-top:15px;
