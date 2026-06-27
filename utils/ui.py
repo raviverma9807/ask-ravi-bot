@@ -11,7 +11,7 @@ def render_header():
 
     st.markdown(
         f"""
-        <div style="display:flex;align-items:center;gap:12px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;">
             <h1 style="margin:0;">Ask Ravi</h1>
             <img src="data:image/jpeg;base64,{img_base64}"
                  style="width:55px;height:55px;border-radius:50%;
