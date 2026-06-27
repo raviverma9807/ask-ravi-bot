@@ -30,8 +30,6 @@ def render_header():
         unsafe_allow_html=True
     )
 
-st.caption("Built with Azure OpenAI • Azure AI Search")
-
     st.caption("Built using Azure OpenAI, Azure AI Search and Streamlit")
 
 
