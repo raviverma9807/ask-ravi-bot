@@ -103,7 +103,7 @@ if user_input:
 
             PROJECT / EXPERIENCE INFORMATION
 
-            {search_context}
+            {context}
             """
 
             answer = openai_service.generate_answer(
