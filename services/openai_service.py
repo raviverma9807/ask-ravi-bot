@@ -54,5 +54,4 @@ class OpenAIService:
             model=self.embedding_deployment,
             input=text
         )
-
-        return response.data[0].embedding
+    return response.data[0].embedding
