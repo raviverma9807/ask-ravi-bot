@@ -49,7 +49,7 @@ if "messages" not in st.session_state:
     st.session_state.messages = [
         {
             "role": "assistant",
-            "content": "👋 Hi! I'm Ask Ravi. Ask me anything about Ravi's experience, projects, Azure expertise, certifications, or skills."
+            "content": "👋 Hi! I'm Ravi's AI assistant. Ask me anything about his experience, projects, Azure expertise, certifications, or skills."
         }
     ]
 
