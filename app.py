@@ -17,7 +17,8 @@ from utils.config import (
     AZURE_DEPLOYMENT,
     AZURE_SEARCH_ENDPOINT,
     AZURE_SEARCH_KEY,
-    AZURE_SEARCH_INDEX
+    AZURE_SEARCH_INDEX,
+    AZURE_EMBEDDING_DEPLOYMENT
 )
 
 # --- Page setup ---
@@ -35,7 +36,8 @@ search_service = SearchService(
 openai_service = OpenAIService(
     endpoint=AZURE_OPENAI_ENDPOINT,
     api_key=AZURE_OPENAI_KEY,
-    deployment=AZURE_DEPLOYMENT
+    deployment=AZURE_DEPLOYMENT,
+    embedding_deployment=AZURE_EMBEDDING_DEPLOYMENT
 )
 
 profile = load_profile()
@@ -85,7 +87,13 @@ if user_input:
     try:
         with st.spinner("Preparing your answer..."):
 
-            search_context, sources = search_service.search_documents(user_input)
+            
+            embedding = openai_service.generate_embedding(user_input)
+
+            context, sources = search_service.search_documents(
+                query=user_input,
+                embedding=embedding
+            )
             context = f"""
             PROFILE INFORMATION
 

@@ -1,6 +1,6 @@
 from azure.core.credentials import AzureKeyCredential
 from azure.search.documents import SearchClient
-from azure.search.documents.models import QueryType
+from azure.search.documents.models import QueryType, VectorizedQuery
 
 
 class SearchService:
@@ -11,7 +11,7 @@ class SearchService:
             credential=AzureKeyCredential(api_key)
         )
 
-    def search_documents(self, query, top=10):
+    def search_documents(self, query, embedding, top=10):
         """
         Searches Azure AI Search and returns:
         - context (formatted string)
@@ -19,12 +19,18 @@ class SearchService:
         """
 
         try:
+            vector_query = VectorizedQuery(
+                vector=embedding,
+                k_nearest_neighbors=10,
+                fields="text_vector"
+            )
+
             results = self.search_client.search(
                 search_text=query,
+                vector_queries=[vector_query],
                 query_type=QueryType.SEMANTIC,
                 semantic_configuration_name="default",
-                query_caption="extractive",
-                top=top
+                top=10
             )
 
             context_parts = []

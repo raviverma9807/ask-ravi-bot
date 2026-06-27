@@ -34,5 +34,6 @@ search_client = SearchClient(
     endpoint=AZURE_SEARCH_ENDPOINT,
     index_name=AZURE_SEARCH_INDEX,
     credential=AzureKeyCredential(AZURE_SEARCH_KEY)
-
 )
+
+AZURE_EMBEDDING_DEPLOYMENT = "text-embedding-3-small"
