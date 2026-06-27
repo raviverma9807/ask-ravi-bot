@@ -13,6 +13,8 @@ AZURE_OPENAI_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT") or st.secrets.get("AZ
 AZURE_OPENAI_KEY = os.getenv("AZURE_OPENAI_KEY") or st.secrets.get("AZURE_OPENAI_KEY")
 AZURE_DEPLOYMENT = os.getenv("AZURE_DEPLOYMENT") or st.secrets.get("AZURE_DEPLOYMENT")
 
+AZURE_EMBEDDING_DEPLOYMENT = os.getenv("AZURE_EMBEDDING_DEPLOYMENT") or st.secrets.get("AZURE_EMBEDDING_DEPLOYMENT")
+
 if not AZURE_OPENAI_ENDPOINT or not AZURE_OPENAI_KEY or not AZURE_DEPLOYMENT:
     st.error("❌ Azure OpenAI credentials not found. Please set AZURE_OPENAI_ENDPOINT, AZURE_OPENAI_KEY, and AZURE_DEPLOYMENT.")
     st.stop()
@@ -35,5 +37,3 @@ search_client = SearchClient(
     index_name=AZURE_SEARCH_INDEX,
     credential=AzureKeyCredential(AZURE_SEARCH_KEY)
 )
-
-AZURE_EMBEDDING_DEPLOYMENT = os.getenv("AZURE_EMBEDDING_DEPLOYMENT") or st.secrets.get("AZURE_EMBEDDING_DEPLOYMENT")

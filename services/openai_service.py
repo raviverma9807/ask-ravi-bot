@@ -13,8 +13,6 @@ class OpenAIService:
             azure_endpoint=endpoint
         )
 
-        return response.data[0].embedding
-
     def generate_answer(self, question, context, history):
         system_prompt = SYSTEM_PROMPT.format(context=context)
 
@@ -54,5 +52,4 @@ class OpenAIService:
             model=self.embedding_deployment,
             input=text
         )
-
         return response.data[0].embedding
