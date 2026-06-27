@@ -36,4 +36,7 @@ search_client = SearchClient(
     credential=AzureKeyCredential(AZURE_SEARCH_KEY)
 )
 
-AZURE_EMBEDDING_DEPLOYMENT = "text-embedding-3-small"
+AZURE_EMBEDDING_DEPLOYMENT = os.getenv(
+    "AZURE_EMBEDDING_DEPLOYMENT",
+    "text-embedding-3-small"
+)
