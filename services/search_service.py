@@ -86,9 +86,8 @@ Relevant Information:
 
             context = "\n".join(context_parts)
 
-            print("====================")
-            print(context)
-            print("====================")
+            with st.expander("Debug Context"):
+                st.text(context)
 
             return context, sorted(set(sources))
 
