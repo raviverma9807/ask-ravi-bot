@@ -2,13 +2,15 @@ from azure.core.credentials import AzureKeyCredential
 from azure.search.documents import SearchClient
 from azure.search.documents.models import QueryType, VectorizedQuery
 
+import logging
 
 class SearchService:
-    def __init__(self, endpoint, api_key, index_name):
+    def __init__(self, endpoint, api_key, index_name, logger=None):
         self.search_client = SearchClient(
             endpoint=endpoint,
             index_name=index_name,
-            credential=AzureKeyCredential(api_key)
+            credential=AzureKeyCredential(api_key),
+            logger=logger or logging.getLogger(__name__)
         )
 
     def search_documents(self, query, embedding, top=10):
@@ -88,25 +90,16 @@ Relevant Information:
 
 
                 except Exception as ex:
-
-                    st.error(f"Error processing document: {title}")
-                    st.error(str(ex))
-                    st.code(traceback.format_exc())
-                    break
+                    logger.exception(
+                        f"Error processing document: {result.get('title', 'Unknown')}"
+                    )
+                    continue
 
 
             context = "\n".join(context_parts)
 
-            with st.expander("Debug Context"):
-                st.code(context)
-
-
             return context, sorted(set(sources))
 
         except Exception as ex:
-
-            st.error("Outer Exception")
-            st.error(str(ex))
-            st.code(traceback.format_exc())
-
+            logger.exception("Azure AI Search failed.")
             return "", []
