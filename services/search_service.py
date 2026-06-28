@@ -48,65 +48,56 @@ class SearchService:
 
             for result in results:
 
-                # Skip weak semantic matches
-                reranker_score = result.get("@search.rerankerScore", 0)
-                if reranker_score < 0.5:
-                    continue
+                st.write("Processing:", result.get("title", "Unknown"))
 
-                title = result.get("title", "Unknown Document")
+                try:
+                    reranker_score = result.get("@search.rerankerScore", 0)
+                    st.write("✓ reranker")
 
-                # Prefer semantic caption if available
-                caption = ""
-                captions = result.get("@search.captions")
+                    title = result.get("title", "Unknown Document")
+                    st.write("✓ title")
 
-                if captions and len(captions) > 0:
-                    caption = captions[0].text
+                    caption = ""
+                    captions = result.get("@search.captions")
+                    st.write("✓ captions")
 
-                chunk = result.get("chunk", "")
+                    if captions and len(captions) > 0:
+                        caption = captions[0].text
+                    st.write("✓ caption processed")
 
-                # Use caption + chunk for better context
-                if caption:
-                    content = f"{caption}\n\n{chunk}"
-                else:
+                    chunk = result.get("chunk", "")
+                    st.write("✓ chunk")
+
                     content = chunk
+                    if caption:
+                        content = f"{caption}\n\n{chunk}"
 
-                if not content:
-                    continue
+                    if not content:
+                        continue
 
-                content = content.strip()
+                    content = content.strip()
 
-                # Remove duplicate chunks
-                if content in seen_chunks:
-                    continue
+                    if content in seen_chunks:
+                        continue
 
-                seen_chunks.add(content)
+                    seen_chunks.add(content)
 
-                context_parts.append(
-                    f"""
-
-
-            st.error("5")
+                    context_parts.append(
+                        f"""
 ==================================================
 Document: {title}
 
 Relevant Information:
 {content}
 """
-                )
+                    )
 
-                sources.append(title)
+                    sources.append(title)
 
-            context = "\n".join(context_parts)
+                    st.success(f"Finished {title}")
 
-            with st.expander("Debug Context"):
-                st.text(context)
-
-            st.success("Context built successfully")
-
-            st.error("6")
-
-            return context, sorted(set(sources))
-
-        except Exception as ex:
-            print(f"Azure AI Search Error: {ex}")
-            return "", []
+                except Exception as ex:
+                    import traceback
+                    st.error(f"Error in document {title}: {ex}")
+                    st.code(traceback.format_exc())
+                    break
