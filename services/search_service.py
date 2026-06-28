@@ -36,7 +36,7 @@ class SearchService:
                 search_text=query,
                 vector_queries=[vector_query],
                 query_type=QueryType.SEMANTIC,
-                semantic_configuration_name="default",
+                semantic_configuration_name="rag-1782364824827-semantic-configuration",
                 top=top
             )
 
