@@ -44,8 +44,6 @@ class SearchService:
 
             for result in results:
 
-                st.write("Processing:", result.get("title", "Unknown"))
-
                 try:
 
                     reranker_score = result.get("@search.rerankerScore") or 0
