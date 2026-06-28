@@ -1,7 +1,7 @@
 from azure.core.credentials import AzureKeyCredential
 from azure.search.documents import SearchClient
 from azure.search.documents.models import QueryType, VectorizedQuery
-
+import streamlit as st
 
 class SearchService:
     def __init__(self, endpoint, api_key, index_name):
@@ -11,7 +11,7 @@ class SearchService:
             credential=AzureKeyCredential(api_key)
         )
 
-    st.error("search_documents() called")
+
 
     def search_documents(self, query, embedding, top=10):
         """
@@ -19,6 +19,7 @@ class SearchService:
         - context (formatted string)
         - sources (list of document names)
         """
+        st.error("search_documents() called")
 
         try:
             vector_query = VectorizedQuery(
