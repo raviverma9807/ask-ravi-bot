@@ -11,6 +11,8 @@ class SearchService:
             credential=AzureKeyCredential(api_key)
         )
 
+    st.error("search_documents() called")
+
     def search_documents(self, query, embedding, top=10):
         """
         Searches Azure AI Search and returns:
@@ -88,6 +90,8 @@ Relevant Information:
 
             with st.expander("Debug Context"):
                 st.text(context)
+
+            st.success("Context built successfully")
 
             return context, sorted(set(sources))
 
