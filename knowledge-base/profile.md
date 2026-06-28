@@ -12,11 +12,12 @@ I am currently working as a Consultant at Capgemini India.
 
 ## Professional Highlights
 
-- 5.5+ years of experience building enterprise applications using .NET and Microsoft Azure.
-- Microsoft Certified: AZ-204, AZ-104, AZ-900 and AI-900.
-- Experienced in cloud-native applications, microservices, distributed systems and event-driven architecture.
-- Hands-on experience with Azure OpenAI, Azure AI Search, Hybrid RAG, Vector Search, Semantic Search and Prompt Engineering.
-- Worked across Logistics, Retail, Healthcare and Utilities domains.
+- Microsoft Certified Azure .NET Developer with 5.5+ years of experience building cloud-native enterprise applications.
+- Expertise in C#, .NET Core, ASP.NET Core, .NET 8, Azure Functions, Azure Service Bus, Event Hub, API Management, and distributed systems.
+- Designed scalable microservices, REST APIs, and event-driven architectures for enterprise solutions.
+- Built an AI-powered Professional Portfolio using Azure OpenAI, Azure AI Search, Hybrid Search (Semantic + Vector Search), text-embedding-3 embeddings, Retrieval-Augmented Generation (RAG), and Prompt Engineering.
+- Delivered enterprise solutions for Royal Mail, Walmart ASDA, CVS Pharmacy, and Welsh Water across logistics, retail, healthcare, and utilities domains.
+- Microsoft Certified: AZ-204, AZ-104, AZ-900, and AI-900.
 
 ---
 
