@@ -56,7 +56,10 @@ class SearchService:
                 chunk = result.get("chunk", "")
 
                 # Use caption + chunk for better context
-                content = caption if caption else chunk
+                if caption:
+                    content = f"{caption}\n\n{chunk}"
+                else:
+                    content = chunk
 
                 if not content:
                     continue
@@ -82,6 +85,10 @@ Relevant Information:
                 sources.append(title)
 
             context = "\n".join(context_parts)
+
+            print("====================")
+            print(context)
+            print("====================")
 
             return context, sorted(set(sources))
 
