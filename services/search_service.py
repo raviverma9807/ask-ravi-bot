@@ -2,6 +2,8 @@ from azure.core.credentials import AzureKeyCredential
 from azure.search.documents import SearchClient
 from azure.search.documents.models import QueryType, VectorizedQuery
 import streamlit as st
+import traceback
+
 
 class SearchService:
     def __init__(self, endpoint, api_key, index_name):
@@ -11,17 +13,17 @@ class SearchService:
             credential=AzureKeyCredential(api_key)
         )
 
-
-
     def search_documents(self, query, embedding, top=10):
         """
         Searches Azure AI Search and returns:
         - context (formatted string)
         - sources (list of document names)
         """
+
         st.error("1")
 
         try:
+
             vector_query = VectorizedQuery(
                 vector=embedding,
                 k_nearest_neighbors=10,
@@ -35,7 +37,7 @@ class SearchService:
                 vector_queries=[vector_query],
                 query_type=QueryType.SEMANTIC,
                 semantic_configuration_name="default",
-                top=10
+                top=top
             )
 
             st.error("3")
@@ -51,7 +53,8 @@ class SearchService:
                 st.write("Processing:", result.get("title", "Unknown"))
 
                 try:
-                    reranker_score = result.get("@search.rerankerScore", 0)
+
+                    reranker_score = result.get("@search.rerankerScore") or 0
                     st.write("✓ reranker")
 
                     title = result.get("title", "Unknown Document")
@@ -63,12 +66,14 @@ class SearchService:
 
                     if captions and len(captions) > 0:
                         caption = captions[0].text
+
                     st.write("✓ caption processed")
 
                     chunk = result.get("chunk", "")
                     st.write("✓ chunk")
 
                     content = chunk
+
                     if caption:
                         content = f"{caption}\n\n{chunk}"
 
@@ -97,7 +102,27 @@ Relevant Information:
                     st.success(f"Finished {title}")
 
                 except Exception as ex:
-                    import traceback
-                    st.error(f"Error in document {title}: {ex}")
+
+                    st.error(f"Error processing document: {title}")
+                    st.error(str(ex))
                     st.code(traceback.format_exc())
                     break
+
+            st.error("5")
+
+            context = "\n".join(context_parts)
+
+            with st.expander("Debug Context"):
+                st.code(context)
+
+            st.success("Context built successfully")
+
+            return context, sorted(set(sources))
+
+        except Exception as ex:
+
+            st.error("Outer Exception")
+            st.error(str(ex))
+            st.code(traceback.format_exc())
+
+            return "", []
