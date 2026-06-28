@@ -4,9 +4,9 @@
 
 My name is Ravi Verma.
 
-I am a Software Engineer with professional experience in designing and developing cloud-native applications using Microsoft Azure and .NET technologies. I specialize in building scalable APIs, event-driven systems, and microservices for enterprise applications.
+I am a Software Engineer with 5+ years of professional experience in designing and developing cloud-native applications using Microsoft Azure and .NET technologies. I specialize in building scalable APIs, event-driven systems, and microservices for enterprise applications.
 
-I currently work as a Consultant at Capgemini India.
+I am currently working as a Consultant at Capgemini India.
 
 ---
 
