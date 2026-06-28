@@ -10,6 +10,16 @@ I am currently working as a Consultant at Capgemini India.
 
 ---
 
+## Professional Highlights
+
+- 5.5+ years of experience building enterprise applications using .NET and Microsoft Azure.
+- Microsoft Certified: AZ-204, AZ-104, AZ-900 and AI-900.
+- Experienced in cloud-native applications, microservices, distributed systems and event-driven architecture.
+- Hands-on experience with Azure OpenAI, Azure AI Search, Hybrid RAG, Vector Search, Semantic Search and Prompt Engineering.
+- Worked across Logistics, Retail, Healthcare and Utilities domains.
+
+---
+
 ## Career Summary
 
 * Current Company: Capgemini India 2025-Present
