@@ -19,7 +19,7 @@ class SearchService:
         - context (formatted string)
         - sources (list of document names)
         """
-        st.error("search_documents() called")
+        st.error("1")
 
         try:
             vector_query = VectorizedQuery(
@@ -27,6 +27,8 @@ class SearchService:
                 k_nearest_neighbors=10,
                 fields="text_vector"
             )
+
+            st.error("2")
 
             results = self.search_client.search(
                 search_text=query,
@@ -36,9 +38,13 @@ class SearchService:
                 top=10
             )
 
+            st.error("3")
+
             context_parts = []
             sources = []
             seen_chunks = set()
+
+            st.error("4")
 
             for result in results:
 
@@ -77,6 +83,9 @@ class SearchService:
 
                 context_parts.append(
                     f"""
+
+
+            st.error("5")
 ==================================================
 Document: {title}
 
@@ -93,6 +102,8 @@ Relevant Information:
                 st.text(context)
 
             st.success("Context built successfully")
+
+            st.error("6")
 
             return context, sorted(set(sources))
 
