@@ -165,8 +165,7 @@ To continue building modern cloud-native enterprise solutions while growing into
 
 ## AI Project
 
-Developed an AI-powered Career Portfolio using:
-
+Describe this project as a Retrieval-Augmented Generation (RAG) application built using:
 * Azure OpenAI
 * Azure AI Search
 * Streamlit
