@@ -55,10 +55,10 @@ def render_sidebar():
                 "Tell me about Ravi's AI-powered projects.",
 
             "💼 Work Experience":
-                "Provide a detailed overview of Ravi's work experience.",
+                "Provide a summary of Ravi's work experience.",
 
             "🎓 Education":
-                "Provide a summary of Ravi's educational background."
+                "Provide info about Ravi's educational background."
 
         }
 
