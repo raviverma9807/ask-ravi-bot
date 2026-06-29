@@ -40,22 +40,22 @@ def render_sidebar():
 
         questions = {
             "☁️ Azure Experience":
-                "Provide a comprehensive summary of Ravi's Azure experience."
+                "Provide a comprehensive summary of Ravi's Azure experience.",
 
             "🏗️ Microservices":
-                "Tell me about Ravi's microservices experience."
+                "Tell me about Ravi's microservices experience.",
 
             "🚀 Projects":
-                "Tell me about Ravi's major projects."
+                "Tell me about Ravi's major projects.",
 
             "🏆 Certifications":
-                "What Microsoft certifications does Ravi hold?"
+                "What Microsoft certifications does Ravi hold?",
 
             "🤖 AI Projects":
-                "Tell me about Ravi's AI-powered projects."
+                "Tell me about Ravi's AI-powered projects.",
 
             "💼 Work Experience":
-                "Provide a detailed overview of Ravi's work experience."
+                "Provide a detailed overview of Ravi's work experience.",
 
             "🎓 Education":
                 "Provide a summary of Ravi's educational background."
