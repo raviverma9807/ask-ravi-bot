@@ -58,7 +58,7 @@ def render_sidebar():
                 "Provide a detailed overview of Ravi's work experience.",
 
             "🎓 Education":
-                "Provide a summary of Ravi's educational background.",
+                "Provide a summary of Ravi's educational background."
 
         }
 
