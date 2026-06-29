@@ -7,8 +7,7 @@ from utils.profile_loader import load_profile
 
 from utils.ui import (
     render_header,
-    render_sidebar,
-    render_sources
+    render_sidebar
 )
 
 from utils.config import (
@@ -90,7 +89,7 @@ if user_input:
             
             embedding = openai_service.generate_embedding(user_input)
 
-            context, sources = search_service.search_documents(
+            context = search_service.search_documents(
                 query=user_input,
                 embedding=embedding
             )
@@ -114,7 +113,6 @@ if user_input:
 
     except Exception as ex:
         answer = f"⚠️ Error: {ex}"
-        sources = []
 
     st.session_state.messages.append(
         {
@@ -125,4 +123,3 @@ if user_input:
 
     with st.chat_message("assistant"):
         st.markdown(answer)
-        render_sources(sources)

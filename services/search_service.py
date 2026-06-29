@@ -17,7 +17,6 @@ class SearchService:
         """
         Searches Azure AI Search and returns:
         - context (formatted string)
-        - sources (list of document names)
         """
 
 
@@ -40,7 +39,6 @@ class SearchService:
 
 
             context_parts = []
-            sources = []
             seen_chunks = set()
 
 
@@ -86,9 +84,7 @@ Relevant Information:
 """
                     )
 
-                    sources.append(title)
-
-
+                    
                 except Exception as ex:
                     logger.exception(
                         f"Error processing document: {result.get('title', 'Unknown')}"
@@ -98,8 +94,8 @@ Relevant Information:
 
             context = "\n".join(context_parts)
 
-            return context, sorted(set(sources))
+            return context
 
         except Exception as ex:
             logger.exception("Azure AI Search failed.")
-            return "", []
+            return ""

@@ -83,12 +83,3 @@ def render_sidebar():
                 mime="application/pdf",
                 use_container_width=True
             )
-
-
-def render_sources(sources):
-    if not sources:
-        return
-
-    with st.expander("📚 Sources"):
-        for source in sorted(set(sources)):
-            st.write(f"• {source}")
