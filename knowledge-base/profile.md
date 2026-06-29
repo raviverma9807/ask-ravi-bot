@@ -165,7 +165,7 @@ To continue building modern cloud-native enterprise solutions while growing into
 
 ## AI Project
 
-Developed an AI-powered Career Assistant using:
+Developed an AI-powered Career Portfolio using:
 
 * Azure OpenAI
 * Azure AI Search

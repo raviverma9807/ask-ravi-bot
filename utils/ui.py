@@ -52,7 +52,7 @@ def render_sidebar():
                 "What Microsoft certifications does Ravi hold?",
 
             "🤖 AI Project":
-                "Tell me about Ravi's AI-powered career assistant."
+                "Tell me about Ravi's AI-powered projects."
         }
 
         for title, question in questions.items():
