@@ -38,6 +38,18 @@ def render_sidebar():
 
         st.header("Quick Questions")
 
+        st.markdown("""
+        <style>
+        div.stButton > button {
+            width: 100%;
+            padding: 0.2rem 0.5rem;
+            min-height: 2rem;
+            font-size: 13px;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+
+
         questions = {
             "☁️ Azure Experience":
                 "Provide a comprehensive summary of Ravi's Azure experience.",
