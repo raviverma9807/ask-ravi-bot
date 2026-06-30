@@ -36,69 +36,64 @@ def render_header():
 def render_sidebar():
     with st.sidebar:
 
-        st.header("Quick Questions")
+        col1, col2 = st.columns(2)
 
-        st.markdown("""
-        <style>
-        div.stButton > button {
-            width: 100%;
-            padding: 0.2rem 0.5rem;
-            min-height: 2rem;
-            font-size: 13px;
-        }
-        </style>
-        """, unsafe_allow_html=True)
+        # -----------------------------
+        # Quick Questions
+        # -----------------------------
+        with col1:
+            st.subheader("Quick Questions")
 
+            questions = {
+                "☁️ Azure":
+                    "Provide a comprehensive summary of Ravi's Azure experience.",
 
-        questions = {
-            "☁️ Azure Experience":
-                "Provide a comprehensive summary of Ravi's Azure experience.",
+                "🏗️ Microservices":
+                    "Tell me about Ravi's microservices experience.",
 
-            "🏗️ Microservices":
-                "Tell me about Ravi's microservices experience.",
+                "🚀 Projects":
+                    "Tell me about Ravi's major projects.",
 
-            "🚀 Projects":
-                "Tell me about Ravi's major projects.",
+                "🏆 Certifications":
+                    "What Microsoft certifications does Ravi hold?",
 
-            "🏆 Certifications":
-                "What Microsoft certifications does Ravi hold?",
+                "🤖 AI Projects":
+                    "Tell me about Ravi's AI-powered projects.",
 
-            "🤖 AI Projects":
-                "Tell me about Ravi's AI-powered projects.",
+                "💼 Experience":
+                    "Provide a summary of Ravi's work experience.",
 
-            "💼 Work Experience":
-                "Provide a summary of Ravi's work experience.",
+                "🎓 Education":
+                    "Provide info about Ravi's educational background."
+            }
 
-            "🎓 Education":
-                "Provide info about Ravi's educational background."
+            for title, question in questions.items():
+                if st.button(title, key=title, use_container_width=True):
+                    st.session_state["preset_question"] = question
 
-        }
+        # -----------------------------
+        # Connect
+        # -----------------------------
+        with col2:
+            st.subheader("Connect")
 
-        for title, question in questions.items():
-            if st.button(title, use_container_width=True):
-                st.session_state["preset_question"] = question
-
-        st.divider()
-
-        st.header("Connect")
-
-        st.link_button(
-            "LinkedIn",
-            "https://www.linkedin.com/in/ravi-verma-2b757817b/",
-            use_container_width=True
-        )
-
-        st.link_button(
-            "GitHub",
-            "https://github.com/raviverma9807/",
-            use_container_width=True
-        )
-
-        with open("resume/Ravi_Verma_Resume.pdf", "rb") as pdf:
-            st.download_button(
-                "📄 Download Resume",
-                pdf,
-                file_name="Ravi_Verma_Resume.pdf",
-                mime="application/pdf",
+            st.link_button(
+                "LinkedIn",
+                "https://www.linkedin.com/in/ravi-verma-2b757817b/",
                 use_container_width=True
             )
+
+            st.link_button(
+                "GitHub",
+                "https://github.com/raviverma9807/",
+                use_container_width=True
+            )
+
+            with open("resume/Ravi_Verma_Resume.pdf", "rb") as pdf:
+                st.download_button(
+                    "Resume",
+                    pdf,
+                    file_name="Ravi_Verma_Resume.pdf",
+                    mime="application/pdf",
+                    use_container_width=True
+                )
