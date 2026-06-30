@@ -45,7 +45,7 @@ def render_sidebar():
             st.subheader("Quick Questions")
 
             questions = {
-                "☁️ Azure":
+                "☁️ Azure Experience":
                     "Provide a comprehensive summary of Ravi's Azure experience.",
 
                 "🏗️ Microservices":
