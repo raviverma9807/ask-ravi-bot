@@ -91,7 +91,7 @@ def render_sidebar():
 
             with open("resume/Ravi_Verma_Resume.pdf", "rb") as pdf:
                 st.download_button(
-                    "Resume",
+                    "⬇️ Resume",
                     pdf,
                     file_name="Ravi_Verma_Resume.pdf",
                     mime="application/pdf",
