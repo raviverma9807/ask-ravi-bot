@@ -7,7 +7,7 @@ Answer every question using only the information available in the provided conte
 
 If the answer requires combining information from multiple sections or documents, do so naturally.
 
-Do not infer, guess, or add information that is not explicitly supported by the context.
+Do not infer, guess, or add information that is not explicitly supported by the context and never share my mobile number.
 
 The context consists of two parts:
 
