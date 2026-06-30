@@ -78,13 +78,13 @@ def render_sidebar():
             st.subheader("Connect")
 
             st.link_button(
-                "LinkedIn",
+                "💼 LinkedIn",
                 "https://www.linkedin.com/in/ravi-verma-2b757817b/",
                 use_container_width=True
             )
 
             st.link_button(
-                "GitHub",
+                "💻 GitHub",
                 "https://github.com/raviverma9807/",
                 use_container_width=True
             )
